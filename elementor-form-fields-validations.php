@@ -7,58 +7,17 @@
 * Author URI: https://elixirinfo.com
 **/
 
+if( ! class_exists( 'Elixir_Updater' ) ){
+	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
+}
 
+$updater = new Smashing_Updater( __FILE__ );
+$updater->set_username( 'cnishtha' );
+$updater->set_repository( 'elixir-elementor-form-validation' );
+
+$updater->initialize();
  
 // ----------------
-// 1: Plugin Description When People Click On View Version Details
-// Note: use the plugin slug, path, name 
- 
-add_filter( 'plugins_api', 'elixir_plugin_view_version_details', 9999, 3 );
- 
-function elixir_plugin_view_version_details( $res, $action, $args ) {
-   if ( 'plugin_information' !== $action ) return $res;
-   if ( $args->slug !== 'Elixir elementor form validation' ) return $res;
-   $res = new stdClass();
-   $res->name = 'Elixir elementor form validation';
-   $res->slug = 'elixir-elementor-form-validation';
-   $res->path = 'Elixir elementor form validation/elementor-form-fields-validations.php';
-   $res->sections = array(
-      'description' => 'The plugin description',
-   );
-   $changelog = elixir_elementor_form_validation_request();
-   $res->version = $changelog->latest_version;
-   $res->download_link = $changelog->download_url; 
-   return $res;
-}
- 
-// ----------------
-// 2: Plugin Update
-// Note: use the plugin {$hostname}, slug & path 
- 
-add_filter( 'update_plugins_https://elixirinfo.com/', function( $update, array $plugin_data, string $plugin_file, $locales ) {
-    if ( $plugin_file !== 'Elixir elementor form validation/elementor-form-fields-validations.php' ) return $update;
-    if ( ! empty( $update ) ) return $update;
-    $changelog = elixir_elementor_form_validation_request();
-    if ( ! version_compare( $plugin_data['Version'], $changelog->latest_version, '<' ) ) return $update;
-    return [
-        'slug' => 'elixir-elementor-form-validation',
-        'version' => $changelog->latest_version,
-        'url' => $plugin_data['PluginURI'],
-        'package' => $changelog->download_url,
-    ];   
-}, 9999, 4 );
- 
-// ----------------
-// 3: Retrieve Plugin Changelog
-// Note: use the public JSON file address
- 
-function elixir_elementor_form_validation_request() {
-    $access = wp_remote_get( 'https://elixirinfo.com/updates/plugin-updates.json', array( 'timeout' => 10,   'headers' => array( 'Accept' => 'application/json' )  ) );
-    if ( ! is_wp_error( $access ) && 200 === wp_remote_retrieve_response_code( $access ) ) {
-         $result = json_decode( wp_remote_retrieve_body( $access ) );
-         return $result;      
-    }
-}
 
 
 function enqueue_custom_stylesheet() {
