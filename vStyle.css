@@ -1,0 +1,23 @@
+.elementor-message.elementor-message-danger {
+        color: #ffffff !important;
+ 	font-size: 12px !important;
+	font-weight: 500 !important;
+	display: block !important;
+	margin: 0;
+	position: absolute;
+	top: 100%;
+	background: #ff5454;
+	margin-top: 5px;
+	padding: 2px;
+	padding-left: 27px;
+	border-radius: 2px;
+	z-index: 1;
+}
+.elementor-field-group .elementor-message.elementor-message-danger:after {
+	content: "";
+	position: absolute;
+	border-left: 10px solid transparent;
+	border-bottom: 10px solid #ff5454;
+	left: 5px;
+	bottom: 100%;
+}
