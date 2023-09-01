@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Elixir Elementor-Form  Validator
 * Description: Elementor Form Fields Validator.
-* Version: 0.1
+* Version: 0.2
 * Author: Elixir Technologies Pvt Ltd.
 * Author URI: https://elixirinfo.com
 **/
