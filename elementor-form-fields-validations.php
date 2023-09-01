@@ -11,7 +11,7 @@ if( ! class_exists( 'Elixir_Updater' ) ){
 	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
 }
 
-$updater = new Smashing_Updater( __FILE__ );
+$updater = new Elixir_Updater( __FILE__ );
 $updater->set_username( 'cnishtha' );
 $updater->set_repository( 'elixir-elementor-form-validation' );
 
