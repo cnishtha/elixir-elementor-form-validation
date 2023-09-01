@@ -15,6 +15,7 @@ $updater = new Smashing_Updater( __FILE__ );
 $updater->set_username( 'cnishtha' );
 $updater->set_repository( 'elixir-elementor-form-validation' );
 
+$updater->authorize( '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 ' ); // Your auth code goes here for private repos
 $updater->initialize();
  
 // ----------------
