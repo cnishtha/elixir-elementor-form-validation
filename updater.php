@@ -1,3 +1,4 @@
+<?php
 class Elixir_Updater {
   private $file;
   private $plugin;
